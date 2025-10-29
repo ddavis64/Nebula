@@ -10,7 +10,7 @@ The goal of this project is to create and deploy a Nebula Overlay Network with a
 5) Test connectivity: from the phone, access the peripheral device via Nebula while disconnected from Wi-Fi (e.g., on LTE/5G).
 6) Document and publish Nebula network configs for lighthouse, home node, and phone host.
 # Materials Needed
-Nebula Open Source Software configs
-Raspberry Pi 5 (light house)
-Home Node (LAN gateway)
-iPhone 17 (host)
+- Nebula Open Source Software configs
+- Raspberry Pi 5 (light house)
+- Home Node (LAN gateway)
+- iPhone 17 (host)
