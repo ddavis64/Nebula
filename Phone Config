@@ -6,14 +6,14 @@
 #   "{nebula ip}": ["{routable ip/dns name}:{routable port}"]
 # Example, if your lighthouse has the nebula IP of 192.168.100.1 and has the real ip address of 100.64.22.11 and runs o>
 static_host_map:
-  "10.1.0.1": ["192.168.0.33:4242"]
+  "10.1.0.2": ["192.168.0.249:4242"]
 lighthouse:
   am_lighthouse: false
   interval: 60
   hosts:
     - "10.1.0.1"
 listen:
-  host: "::"
+  host: "0.0.0.0"
   port: 4242
 punchy:
   punch: true
