@@ -1,0 +1,64 @@
+# This is the nebula example configuration file. You must edit, at a minimum, the static_host_map, lighthouse, and fire>
+  ca: key
+  cert: key
+  key: key
+# The syntax is:
+#   "{nebula ip}": ["{routable ip/dns name}:{routable port}"]
+# Example, if your lighthouse has the nebula IP of 192.168.100.1 and has the real ip address of 100.64.22.11 and runs o>
+static_host_map:
+  "10.1.0.1": ["192.168.0.33:4242"]
+lighthouse:
+  am_lighthouse: false
+  interval: 60
+  hosts:
+    - "10.1.0.1"
+listen:
+  host: "::"
+  port: 4242
+punchy:
+  punch: true
+relay:
+  am_relay: false
+  use_relays: true
+tun:
+  disabled: false
+  dev: nebula1
+  drop_local_broadcast: false
+  drop_multicast: false
+  tx_queue: 500
+  mtu: 1300
+logging:
+  level: info
+  format: text
+firewall:
+  outbound_action: drop
+  inbound_action: drop
+conntrack:
+    tcp_timeout: 12m
+    udp_timeout: 3m
+    default_timeout: 10m
+
+  outbound:
+    # Allow all outbound traffic from this node
+    - port: any
+      proto: any
+      host: any
+
+  inbound:
+    # Allow icmp between any nebula hosts
+    - port: any
+      proto: any
+      host: any
+
+    # Allow tcp/443 from any host with BOTH laptop and home group
+    - port: 443
+      proto: tcp
+      groups:
+        - laptop
+        - home
+  # Expose a subnet (unsafe route) to hosts with the group remote_client
+    # This example assume you have a subnet of 192.168.100.1/24 or larger encoded in the certificate
+    - port: 8080
+      proto: tcp
+      group: remote_client
+      local_cidr: 192.168.100.1/24
