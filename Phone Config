@@ -1,6 +1,7 @@
-ca: key
-cert: key
-key: key
+PKI:
+  ca: key
+  cert: key
+  key: key
 
 static_host_map:
   "10.1.0.2": 
