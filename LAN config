@@ -1,102 +1,66 @@
-# This is the nebula example configuration file. You must edit, at a minimum, the static_host_map, lighthouse, and fire>
-
 pki:
-  # The CAs that are accepted by this node. Must contain one or more certificates created by 'nebula-cert ca'
   ca: key
   cert: key
   key: key
 
-
-# The static host map defines a set of hosts with fixed IP addresses on the internet (or any network).
-# A host can have multiple fixed IP addresses defined here, and nebula will try each when establishing a tunnel.
-# The syntax is:
-#   "{nebula ip}": ["{routable ip/dns name}:{routable port}"]
-# Example, if your lighthouse has the nebula IP of 192.168.100.1 and has the real ip address of 100.64.22.11 and runs o>
 static_host_map:
-  "10.1.0.1": ["192.168.0.33:4242"]
-
+  "10.1.0.3": ["98.169.84.229:4242"]
 
 lighthouse:
-
   am_lighthouse: false
-  
- interval: 60
-
+  interval: 60
   hosts:
     - "10.1.0.1"
 
-
-# Port Nebula will be listening on. The default here is 4242. For a lighthouse node, the port should be defined,
-# however using port 0 will dynamically assign a port and is recommended for roaming nodes.
 listen:
-  # To listen on only ipv4, use "0.0.0.0"
   host: "0.0.0.0"
-  port: 0
+  port: 4242
 
 punchy:
-
   punch: true
 
-
-# EXPERIMENTAL: relay support for networks that can't establish direct connections.
 relay:
-
- am_relay: false
- 
+  am_relay: false
   use_relays: true
 
-# Configure the private interface. Note: addr is baked into the nebula certificate
 tun:
- 
+  disabled: false
   dev: nebula1
-  local_ip: 10.1.0.1
-  # Toggles forwarding of local broadcast packets, the address of which depends on the ip/mask encoded in pki.cert
   drop_local_broadcast: false
-  # Toggles forwarding of multicast packets
   drop_multicast: false
-  # Sets the transmit queue length, if you notice lots of transmit drops on the tun it may help to raise this number. D>
   tx_queue: 500
   mtu: 1300
 
-
-
-  unsafe_routes:
-    - route: 192.168.0.1/24
-      via: 10.1.0.1/24
-      mtu: 1300
 logging:
-
   level: info
-
   format: text
+
 firewall:
- 
   outbound_action: drop
   inbound_action: drop
- conntrack:
-    tcp_timeout: 12m
-    udp_timeout: 3m
-    default_timeout: 10m
- outbound:
-    # Allow all outbound traffic from this node
-    - port: any
-      proto: any
-      host: any
 
-  inbound:
-    # Allow icmp between any nebula hosts
-    - port: any
-      proto: any
-      host: any
+conntrack:
+  tcp_timeout: 12m
+  udp_timeout: 3m
+  default_timeout: 10m
+
+outbound:
+  - port: any
+    proto: any
+    host: any
+
+inbound:
+  - port: any
+    proto: any
+    host: any
+
   - port: 443
-      proto: tcp
-      groups:
-        - laptop
-        - home
+    proto: tcp
+    groups:
+      - laptop
+      - home
 
-    # Expose a subnet (unsafe route) to hosts with the group remote_client
-    # This example assume you have a subnet of 192.168.100.1/24 or larger encoded in the certificate
-    - port: 8080
-      proto: tcp
-      group: remote_client
-      local_cidr: 192.168.0.1/24
+  - port: 8080
+    proto: tcp
+    group: remote_client
+    local_cidr: 192.168.0.1/24
