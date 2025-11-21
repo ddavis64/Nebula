@@ -5,7 +5,7 @@ PKI:
 
 static_host_map:
   "10.1.0.2": 
-  - "192.168.0.249:4242"
+  - "98.169.84.229:4242"
 
 lighthouse:
   am_lighthouse: false
