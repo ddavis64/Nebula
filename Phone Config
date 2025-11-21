@@ -4,7 +4,7 @@ PKI:
   key: key
 
 static_host_map:
-  "10.1.0.2": 
+  "10.1.0.1": 
   - "98.169.84.229:4242"
 
 lighthouse:
