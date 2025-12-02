@@ -1,0 +1,60 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0" version="29.2.2">
+  <diagram id="nebula" name="Nebula Network">
+    <mxGraphModel dx="1034" dy="570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="phone" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;" value="Mobile Phone (Outside Home Network)" vertex="1">
+          <mxGeometry height="80" width="120" x="40" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="cloud" parent="1" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" value="Nebula Overlay Network&#xa;(Encrypted Tunnels)" vertex="1">
+          <mxGeometry height="130" width="200" x="220" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="raspi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" value="Raspberry Pi&#xa;Lighthouse + Nebula Node" vertex="1">
+          <mxGeometry height="80" width="180" x="460" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="homeNet" parent="1" style="swimlane;childLayout=stackLayout;horizontal=1;resizeLast=0;html=1;fontSize=14;" value="Home Network (LAN)" vertex="1">
+          <mxGeometry height="350" width="320" x="700" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="router" parent="homeNet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;" value="Home Router / Gateway" vertex="1">
+          <mxGeometry height="60" width="200" x="20" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="device" parent="homeNet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" value="TV / Printer&#xa;(Nebula Node)" vertex="1">
+          <mxGeometry height="60" width="200" x="20" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pc" parent="homeNet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" value="Home PC&#xa;(Nebula Node)" vertex="1">
+          <mxGeometry height="60" width="200" x="20" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" edge="1" parent="1" source="phone" style="dashed=1;strokeColor=#0000ff;html=1;entryX=0.098;entryY=0.508;entryDx=0;entryDy=0;entryPerimeter=0;" target="cloud">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8oGmLsASCwfmjzn_MXwU-1" connectable="0" parent="c1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;" value="UDP Port&lt;div&gt;4242&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.646" y="-1" as="geometry">
+            <mxPoint x="-19" y="21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c2" edge="1" parent="1" source="raspi" style="dashed=1;strokeColor=#0000ff;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.89;entryY=0.36;entryDx=0;entryDy=0;entryPerimeter=0;" target="cloud">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" edge="1" parent="1" source="raspi" style="strokeColor=#000000;html=1;" target="router">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" edge="1" parent="1" source="device" style="dashed=1;strokeColor=#0000ff;html=1;entryX=0.894;entryY=0.557;entryDx=0;entryDy=0;entryPerimeter=0;" target="cloud">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" edge="1" parent="1" source="pc" style="dashed=1;strokeColor=#0000ff;html=1;entryX=0.91;entryY=0.711;entryDx=0;entryDy=0;entryPerimeter=0;" target="cloud">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8oGmLsASCwfmjzn_MXwU-7" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;" value="UDP Port&lt;div&gt;4242&lt;/div&gt;" vertex="1">
+          <mxGeometry x="420" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="8oGmLsASCwfmjzn_MXwU-8" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;" value="UDP Port&lt;div&gt;4242&lt;/div&gt;" vertex="1">
+          <mxGeometry x="580" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="8oGmLsASCwfmjzn_MXwU-12" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBorderColor=default;" value="Home LAN" vertex="1">
+          <mxGeometry x="670" y="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
