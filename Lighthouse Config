@@ -28,8 +28,7 @@ tun:
   drop_multicast: false
   tx_queue: 500
   mtu: 1300
-  routes:
-    - mtu: 1300
+  routes: []
   local_ip: "10.1.0.1"
 
 logging:
@@ -39,29 +38,18 @@ logging:
 firewall:
   outbound_action: drop
   inbound_action: drop
+  
+  outbound:
+    - port: any
+      proto: any
+      host: any
+
+  inbound:
+    - port: any
+      proto: any
+      host: any
 
 conntrack:
   tcp_timeout: 12m
   udp_timeout: 3m
   default_timeout: 10m
-
-outbound:
-  - port: any
-    proto: any
-    host: any
-
-inbound:
-  - port: any
-    proto: any
-    host: any
-
-  - port: 443
-    proto: tcp
-    groups:
-        - laptop
-        - home
-
-  - port: 8080
-    proto: tcp
-    group: remote_client
-    local_cidr: 10.1.0.1/24
