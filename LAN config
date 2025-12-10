@@ -4,7 +4,7 @@ pki:
   key: key
 
 static_host_map:
-  "10.1.0.3": ["98.169.84.229:4242"]
+  "10.1.0.1": ["98.169.84.229:4242"]
 
 lighthouse:
   am_lighthouse: false
@@ -14,7 +14,7 @@ lighthouse:
 
 listen:
   host: "0.0.0.0"
-  port: 4242
+  port: 0
 
 punchy:
   punch: true
@@ -30,6 +30,7 @@ tun:
   drop_multicast: false
   tx_queue: 500
   mtu: 1300
+  local_ip: "10.1.0.3/24"
 
 logging:
   level: info
@@ -39,28 +40,17 @@ firewall:
   outbound_action: drop
   inbound_action: drop
 
+  outbound:
+    - port: any
+      proto: any
+      host: any
+
+  inbound:
+    - port: any
+      proto: any
+      host: any
+
 conntrack:
   tcp_timeout: 12m
   udp_timeout: 3m
   default_timeout: 10m
-
-outbound:
-  - port: any
-    proto: any
-    host: any
-
-inbound:
-  - port: any
-    proto: any
-    host: any
-
-  - port: 443
-    proto: tcp
-    groups:
-      - laptop
-      - home
-
-  - port: 8080
-    proto: tcp
-    group: remote_client
-    local_cidr: 192.168.0.1/24
