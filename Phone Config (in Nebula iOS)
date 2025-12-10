@@ -4,53 +4,73 @@ PKI:
   key: key
 
 static_host_map:
-  "10.1.0.1": 
-  - "98.169.84.229:4242"
-
+  10.1.0.1:
+  - 98.169.84.229:4242
+  - 192.168.0.33:4242
 lighthouse:
   am_lighthouse: false
+  serve_dns: false
+  dns:
+    host: ""
+    port: 0
+  interval: 0
   hosts:
-    - "10.1.0.1"
-  interval: 60
-
+  - 10.1.0.1
 listen:
-  host: "[::]"
+  host: '[::]'
   port: 0
-
+  batch: 64
+  read_buffer: 0
+  write_buffer: 0
 punchy:
   punch: true
-
-relay:
-  am_relay: false
-  use_relays: true
-
+  respond: false
+  delay: 1s
+cipher: aes
+local_range: ""
+sshd:
+  enabled: false
+  listen: ""
+  host_key: ""
+  authorized_users: []
 tun:
-  disabled: false
-  dev: nebula1
+  dev: tun1
   drop_local_broadcast: true
   drop_multicast: true
   tx_queue: 500
   mtu: 1300
-
+  routes: []
+  unsafe_routes: []
 logging:
   level: info
   format: text
-
+stats:
+  type: ""
+  interval: ""
+  prefix: ""
+  protocol: ""
+  host: ""
+  listen: ""
+  path: ""
+  namespace: ""
+  subsystem: ""
+handshakes:
+  try_interval: 100ms
+  retries: 20
+  wait_rotation: 5
+tunnels:
+  drop_inactive: true
+  inactivity_timeout: 10m
 firewall:
-  outbound_action: drop
-  inbound_action: drop
-
-conntrack:
-  tcp_timeout: 12m
-  udp_timeout: 3m
-  default_timeout: 10m
-
-outbound:
-- port: any
-  proto: any
-  host: any
-
-inbound:
-- port: any
-  proto: any
-  host: any
+  conntrack:
+    tcp_timeout: 120h
+    udp_timeout: 3m
+    default_timeout: 10m
+    max_connections: 100000
+  outbound:
+  - port: any
+    proto: any
+    host: any
+  inbound: []
+relay:
+  use_relays: true
