@@ -1,0 +1,17 @@
+services:
+  homepc:
+    build: .
+    container_name: nebula-homepc
+
+    cap_add:
+      - NET_ADMIN
+
+    devices:
+      - /dev/net/tun:/dev/net/tun
+
+    volumes:
+      - ../config:/config
+      - ../certs:/certs
+
+    restart: unless-stopped
+
