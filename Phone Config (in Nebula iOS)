@@ -14,8 +14,8 @@ lighthouse:
   interval: 60
 
 listen:
-  host: "::"
-  port: 4242
+  host: "[::]"
+  port: 0
 
 punchy:
   punch: true
@@ -27,8 +27,8 @@ relay:
 tun:
   disabled: false
   dev: nebula1
-  drop_local_broadcast: false
-  drop_multicast: false
+  drop_local_broadcast: true
+  drop_multicast: true
   tx_queue: 500
   mtu: 1300
 
@@ -54,10 +54,3 @@ inbound:
 - port: any
   proto: any
   host: any
-
-- port: 443
-  proto: tcp
-  groups:
-    - laptop
-    - home
-
