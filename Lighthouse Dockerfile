@@ -1,0 +1,15 @@
+FROM alpine:latest
+
+RUN apk add --no-cache ca-certificates bash wget
+
+WORKDIR /nebula
+
+
+RUN wget https://github.com/slackhq/nebula/releases/download/v1.9.2/nebula-linux-arm64.tar.gz && \
+    tar -xvf nebula-linux-arm64.tar.gz && \
+    mv nebula /usr/local/bin/nebula && \
+    mv nebula-cert /usr/local/bin/nebula-cert && \
+    chmod +x /usr/local/bin/nebula /usr/local/bin/nebula-cert
+
+
+CMD ["nebula", "-config", "/config/config.yaml"]
