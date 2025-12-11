@@ -14,7 +14,7 @@ lighthouse:
 
 listen:
   host: "0.0.0.0"
-  port: 0
+  port: 53355
 
 punchy:
   punch: true
